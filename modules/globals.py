@@ -50,12 +50,16 @@ headless: bool | None = None         # Run without UI?
 log_level: str = "error"             # Logging level (e.g., 'debug', 'info', 'warning', 'error')
 
 # Face Processor UI Toggles (Example)
-fp_ui: Dict[str, bool] = {"face_enhancer": False, "face_enhancer_gpen256": False, "face_enhancer_gpen512": False}
+fp_ui: Dict[str, bool] = {"face_enhancer": False, "face_enhancer_gpen256": False, "face_enhancer_gpen512": False, "face_enhancer_codeformer": False}
 
 # Face Swapper Specific Options
 face_swapper_enabled: bool = True # General toggle for the swapper processor
 opacity: float = 1.0              # Blend factor for the swapped face (0.0-1.0)
 sharpness: float = 0.0            # Sharpness enhancement for swapped face (0.0-1.0+)
+swap_model: str = "inswapper"     # Which swap model to use: "inswapper" or "hyperswap"
+hq_pipeline: bool = False         # High-quality pipeline: paste_back=False + Lanczos upscale + CodeFormer on aligned face
+hq_color_blend: float = 0.4       # LAB color transfer blend factor (0=keep swap colors, 1=match original skin)
+hq_fidelity: float = 0.7          # CodeFormer fidelity weight (0=max quality/hallucination, 1=max fidelity to input)
 
 # Mouth Mask Options
 mouth_mask: bool = False           # Enable mouth area masking/pasting
